@@ -1,10 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 from collections import Counter
-
-bleauinfo_url = "https://bleau.info/areas_by_region"
-
-# Final data : 
+# TODO: logging : ad logs in the scraping 
+# TODO: try except catch instead of if/else
+# TODO: handle encoding exception for character "É"
 
 
 # Function to get all sites link 
@@ -52,7 +51,8 @@ def scrape_sites(urls):
         if response.status_code == 200:
             soup = BeautifulSoup(response.content, "html.parser", from_encoding="ISO-8859-1")
             site = soup.h3  # Find the first h3 element
-            name = site.text.strip()  # Extract the inner text of this h3 element 
+            name = site.text.strip()  # Extract the inner text of this h3 element
+            name = name.replace("\x89", "E") # Handle a encoding exception 
             sites_name.append(name)  # Store the site name inside global array for later
             
             types = soup.find_all("span", class_="btype")
@@ -76,18 +76,7 @@ def scrape_sites(urls):
     return all_routes_types, sites_name, all_data
 
 
-
 # Function to get the count of each route type in a site
 def count_types(array):
      return Counter(array).most_common()
-
-
-all_sites_links = scrape_sectors(bleauinfo_url)
-all_sites_url = create_sites_url(all_sites_links)
-result = scrape_sites(all_sites_url)
-print(result)
-
-# Where am i : 
-# I have a script that scrap over all sites references in bleau.info and 
-# returns a dictionary where keys are sites names and values are each routes types you can find there and its counted occurrence. 
 
