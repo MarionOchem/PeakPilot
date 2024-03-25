@@ -1,8 +1,10 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"PeakPilot/API/initializers"
 
-// "github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin"
+)
 
 // Struct definition to represent the data of all sites_routes table data
 // type all struct {
@@ -11,8 +13,15 @@ import "github.com/gin-gonic/gin"
 // 	Route_Count int
 // }
 
+func init() {
+	initializers.LoadEnvVariables()
+	initializers.ConnectToDb()
+}
 
 func main() {
+	
+
+
 	r := gin.Default()
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
