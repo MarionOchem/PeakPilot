@@ -7,12 +7,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type Route struct {
-	Name string
-}
+
 
 func GetRoutes(c *gin.Context) {
-	// Get all sites
+	// Get all routes names data
 	var routes []Route
 	result := initializers.DB.Select("name").Find(&routes)
 	if result.Error != nil {
@@ -20,9 +18,9 @@ func GetRoutes(c *gin.Context) {
 		return
 	}
 
-	// Return the list of sites in the JSON response
+	// Return the list of routes in the JSON response
 	c.JSON(http.StatusOK, gin.H{
 		"message": "All routes of all sites",
-		"sites": routes,
+		"data": routes,
 	})
 }

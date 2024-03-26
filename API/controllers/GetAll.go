@@ -7,29 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type DbStructure struct {
-	SiteName string
-	RouteType string
-	RouteCount int
-}
-
-// Restructuring data before returning it as JSON :
-// Gorm maps the columns from the query result to the fields of those structs
-
-// Struct to represent the nested route data
-type NestedRoute struct {
-	RouteType  string
-	RouteCount int    
-}
-
-// Struct to represent the nested site data
-type NestedSite struct {
-    SiteName string
-    Routes []NestedRoute
-}
-
-// Determine if NestedSite already exists for the current site. If it does, append the current route tot he existing NestedSite, 
-// if it doesn't, create a new NestedSite for the current site. 
+// Determine if NestedSite already exists for the current site. If it does, append the current route tot he existing NestedSite,
+// if it doesn't, create a new NestedSite for the current site.
 func findSiteIndex(nestedRoutes []NestedSite, siteName string) int {
     for i, nestedRoute := range nestedRoutes {
         if nestedRoute.SiteName == siteName {
@@ -41,10 +20,8 @@ func findSiteIndex(nestedRoutes []NestedSite, siteName string) int {
 
 
 func GetAll(c *gin.Context) {
-	// Get all sites names, routes and routes counts data
-	var allNestedRoutes []NestedSite 
 
-		var siteRouteContent []DbStructure
+	var siteRouteContent []DbStructure
 	result := initializers.DB.Table("site_route_content" ).Select("site_name", "route_type", "route_count").Find(&siteRouteContent)
 
 	if result.Error != nil {
@@ -52,6 +29,7 @@ func GetAll(c *gin.Context) {
 		return
 	}
 
+	var allNestedRoutes []NestedSite
 	for _, route := range siteRouteContent {
 		nestedRoute := NestedRoute{
 			RouteType: route.RouteType,
