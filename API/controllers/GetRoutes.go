@@ -19,8 +19,5 @@ func GetRoutes(c *gin.Context) {
 	}
 
 	// Return the list of routes in the JSON response
-	c.JSON(http.StatusOK, gin.H{
-		"message": "All routes of all sites",
-		"data": routes,
-	})
+	c.JSON(http.StatusOK, routes)
 }

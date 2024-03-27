@@ -1,3 +1,5 @@
+// Restructuring db data before returning it as JSON :
+
 package controllers
 
 type DbStructure struct {
@@ -6,27 +8,21 @@ type DbStructure struct {
 	RouteCount int
 }
 
-// Restructuring data before returning it as JSON :
-// Gorm maps the columns from the query result to the fields of those structs
-
-// Struct to represent the nested route data
-type NestedRoute struct {
-	RouteType  string
-	RouteCount int
-}
-
-// Struct to represent the nested site data
-type NestedSite struct {
-	SiteName string
-	Routes   []NestedRoute
-}
-
 type Route struct {
 	Name string
 }
 
 type Site struct {
 	Name string
+}
+type NestedRoute struct {
+	RouteType  string
+	RouteCount int
+}
+
+type NestedSite struct {
+	SiteName string
+	Routes   []NestedRoute
 }
 
 type Response struct {

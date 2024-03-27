@@ -28,9 +28,11 @@ func GetSpecificSite(c *gin.Context) {
 		nestedRoutes = append(nestedRoutes, nestedRoute)
 	}
 
+	nestedSite := NestedSite{
+		SiteName: site,
+		Routes: nestedRoutes,
+	}
+
 	// Return the routes data for the specific site in the JSON response
-	c.JSON(http.StatusOK, gin.H{
-		"site":  site,
-		"routes": nestedRoutes,
-	})
+	c.JSON(http.StatusOK, nestedSite)
 }

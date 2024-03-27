@@ -47,9 +47,6 @@ func GetAll(c *gin.Context) {
 	}
 
 	// Return the list of sites names, routes and routes counts data in the JSON response
-	c.JSON(http.StatusOK, gin.H{
-		"message": "All routes and their counts of all sites",
-		"data": allNestedRoutes,
-	})
+	c.JSON(http.StatusOK, allNestedRoutes)
 }
 

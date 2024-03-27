@@ -19,8 +19,5 @@ func GetSite(c *gin.Context) {
 	}
 
 	// Return the list of sites in the JSON response
-	c.JSON(http.StatusOK, gin.H{
-		"message": "All sites",
-		"data":   sites,
-	})
+	c.JSON(http.StatusOK, sites)
 }
