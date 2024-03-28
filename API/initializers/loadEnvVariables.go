@@ -1,3 +1,5 @@
+// Load environment variables from the .env file
+
 package initializers
 
 import (

@@ -16,7 +16,7 @@ func init() {
 func main() {
 	r := gin.Default()
 	r.GET("/", controllers.GetAll)
-	r.GET("/site", controllers.GetSite)
+	r.GET("/sites", controllers.GetSite)
 	r.GET("/routes", controllers.GetRoutes)
 	r.GET("/:site", controllers.GetSpecificSite) // Get only a specific site routes data
 	r.GET("/:site/:route", controllers.GetSpecificSiteRoute) // Get only a specific site and specific route data

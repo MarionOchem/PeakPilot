@@ -1,3 +1,5 @@
+// Get all routes types and count from a specific site
+
 package controllers
 
 import (
@@ -11,7 +13,10 @@ func GetSpecificSite(c *gin.Context) {
 	// Retrieve site parameter from the HTTP request 
 	site := c.Param("site")
 
+	// Define a slice to store the retrieved data
 	var siteRouteContent []DbStructure
+
+	// Query db
 	result := initializers.DB.Table("site_route_content").Select("site_name", "route_type", "route_count").Where("site_name = ?", site).Find(&siteRouteContent)
 
 	if result.Error != nil {
@@ -19,12 +24,16 @@ func GetSpecificSite(c *gin.Context) {
 		return
 	}
 
+	// Define a slice to store the nested routes data 
 	var nestedRoutes []NestedRoute
+	// Iterate over the retrieved data to construct nested site structure
 	for _, route := range siteRouteContent {
+		// Create a nested route object
 		nestedRoute := NestedRoute{
 			RouteType:  route.RouteType,
 			RouteCount: route.RouteCount,
 		}
+		// Append the route to the nested site structure
 		nestedRoutes = append(nestedRoutes, nestedRoute)
 	}
 

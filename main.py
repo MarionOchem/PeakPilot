@@ -1,11 +1,14 @@
 from sys import path
 
+# Add parent directories to the Python path to look for modules in those locations
 path.append('..\\Scraping')
 path.append('..\\DbInterface')
 
+# Import all functions from modules
 from Scraping.bleauinfo import *
 from DbInterface.seed import * 
 
+# URL of the bleauinfo website to scrape
 bleauinfo_url = "https://bleau.info/areas_by_region"
 
 def main():
@@ -16,11 +19,9 @@ def main():
     print(result)
 
     # Run the insertion into db module
-    executeInsertions(result[1], result[0], result[3])
+    executeInsertions(result[1], result[0], result[2])
  
-
-
-
 
 if __name__ == "__main__":
     main()
+

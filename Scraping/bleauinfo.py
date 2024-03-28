@@ -1,18 +1,20 @@
+# Scrapes the targeted data from bleauinfo website
+
 import requests
 from bs4 import BeautifulSoup
 from collections import Counter
 from unidecode import unidecode
 import logging
+
+# Set up logging configuration
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-# TODO: try except catch instead of if/else
-# TODO: handle encoding exception for character "É" and others
 # TODO: fichier test : bleauinfo_test.py import bleauinfo.py function and test it 
 
 
-# Function to get all sites link 
+# Function to scrapes the href links of all sites from the specified URL
 def scrape_sectors(url):
     logger.info('Starting scrape_sectors -- scraping href')
     sites_links = []
@@ -32,7 +34,7 @@ def scrape_sectors(url):
             logger.error('Failed to fetch bleau.info webstite :', response.status_code)
             return None
 
-# Function to construct url link of each sites     
+# Function to construct URLs link for each site    
 def create_sites_url(links):
       logger.info('Starting create_sites_url -- creating urls')
       sites_url = []
@@ -46,7 +48,7 @@ def create_sites_url(links):
       return sites_url
 
 
-# Function to scrape each sites and retrieve its types
+# Function to scrape each sites and retrieve its routes types
 def scrape_sites(urls):
     logger.info('Starting scrape_sites -- main scrap')
     all_routes_types = set()

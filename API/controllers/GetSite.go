@@ -1,3 +1,5 @@
+// Get all sites names data
+
 package controllers
 
 import (
@@ -10,8 +12,11 @@ import (
 
 
 func GetSite(c *gin.Context) {
-	// Get all sites names data
+
+	// Define a slice to store the retrieved data
 	var sites []Site
+
+	// QUery db
 	result := initializers.DB.Select("name").Find(&sites)
 	if result.Error != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve sites"})

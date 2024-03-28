@@ -1,3 +1,5 @@
+// Create a global variable that point to a gorm.DB object (provided by GORM lib representing a connection to a postgres db and provides method for interacting with it)
+
 package initializers
 
 import (
@@ -8,9 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
-// Create a global variable that point to a gorm.DB object (provided by GORM lib representing a connection to a postgres db and provides method for interactig with it)
 var DB *gorm.DB
-
 
 func ConnectToDb() {
 	var err error

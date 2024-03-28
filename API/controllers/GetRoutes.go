@@ -1,3 +1,5 @@
+// Get all routes names data
+
 package controllers
 
 import (
@@ -10,8 +12,11 @@ import (
 
 
 func GetRoutes(c *gin.Context) {
-	// Get all routes names data
+
+	// Define a slice to store the retrieved data
 	var routes []Route
+
+	// Query db
 	result := initializers.DB.Select("name").Find(&routes)
 	if result.Error != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve sites"})

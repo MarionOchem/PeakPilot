@@ -1,4 +1,4 @@
-// Restructuring db data before returning it as JSON :
+// Common struct for JSON data structure
 
 package controllers
 
