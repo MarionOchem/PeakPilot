@@ -12,7 +12,7 @@ This project automates the process of scraping climbing site data from various w
 - Postman
 - Metabase
 
-![](images/UI.JPG)
+![](Capture_PeakPilot.mp4)
 
 
 
