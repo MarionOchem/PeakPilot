@@ -11,3 +11,11 @@ This project automates the process of scraping climbing site data from various w
 - Go (net/http, gin, gorm, godotenv, CompileDaemon, log, os)
 - Postman
 - Metabase
+
+![](images/UI.JPG)
+
+
+
+
+
+
