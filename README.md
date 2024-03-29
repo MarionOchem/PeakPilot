@@ -8,6 +8,6 @@ This project automates the process of scraping climbing site data from various w
 - Python (requests, beautifulsoup4, psycopg2, unidecode)
 - PostgreSQL (pgAdmin)
 - SQL (temporary tables, update/set, transactions, views)
-- Go (net/http, gin, gorm, godotenv, log, os)
+- Go (net/http, gin, gorm, godotenv, CompileDaemon, log, os)
 - Postman
 - Metabase
