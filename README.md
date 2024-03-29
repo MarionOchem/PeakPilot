@@ -1,7 +1,7 @@
 # PeakPilot
 
 Project to gather, store, update and deliver detailed informations about climbing sites in Fontainebleau, France.
-This project automates the process of scraping climbing site data from various web pages, automating the storing of the scrapped data in a database, updating the information and providing an API to access the data in a structured JSON format.
+This project automates the process of scraping climbing site data from various web pages, automating the storing of the scrapped data in a database, updating the information and providing an API to access the data in JSON.
 
 ## Tech Stack :
 
